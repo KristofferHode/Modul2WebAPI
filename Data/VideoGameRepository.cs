@@ -1,14 +1,14 @@
 using System.Globalization;
 using CsvHelper;
 using CsvHelper.Configuration;
-using Videgame.model;
+using VideoGame.model;
 
 namespace Modul2WEBAPI.Data;
 
 
 public class VideoGameRepository
 {
-    private readonly List<VideoGame> _games=new();
+    private readonly List<VideoGames> _games=new();
     private int _nextId=1;
     public VideoGameRepository()
     {
@@ -23,11 +23,11 @@ public class VideoGameRepository
             HasHeaderRecord=true
         });
         
-        var records = csv.GetRecords<VideoGame>();
+        var records = csv.GetRecords<VideoGameCsv>();
 
         foreach (var r in records)
         {
-            _games.Add(new VideoGame
+            _games.Add(new VideoGames
             {
                 GameID=_nextId++,
                 Title= r.Title,
