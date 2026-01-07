@@ -23,7 +23,7 @@ public class VideoGameRepository
             HasHeaderRecord=true
         });
         
-        var records = csv.GetRecords<VideoGameCsv>();
+        var records = csv.GetRecords<VideoGame>();
 
         foreach (var r in records)
         {
@@ -40,12 +40,37 @@ public class VideoGameRepository
             });
         }
     }
-    public List<Videogame> GetAll() => _games;
+    public List<VideoGame> GetAll() => _games;
     public VideoGame? GetById(int id)=>
-        _games.FirstOrDefault(g=>g.Id==id);
+        _games.FirstOrDefault(g=>g.GameID==id);
     public VideoGame Add (VideoGame game)
     {
-        game.Id=_nextId++;
+        game.GameID=_nextId++;
         _games.Add(game);
+        return game;
+    }
+    public bool Update(int id, VideoGame update)
+    {
+        var game = GetById(id);
+        if(game==null)return false;
+
+        game.Title=update.Title;
+        game.Genere=update.Genere;
+        game.Platform=update.Platform;
+        game.ReleaseYear=update.ReleaseYear;
+        game.Publisher=update.Publisher;
+        game.GlobalSales=update.GlobalSales;
+        game.Rating=update.Rating;
+
+        return true;;
+    }
+    
+    public bool Delete(int id)
+    {
+        var game = GetById(id);
+        if (game==null)return false;
+
+        _games.Remove(game);
+        return true;
     }
 }
