@@ -1,4 +1,4 @@
-namespace VideoGame.model;
+namespace VideoGameModel.model;
 
 
 public class VideoGame
