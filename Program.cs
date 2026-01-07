@@ -1,19 +1,17 @@
-
-
+using Modul2WEBAPI;
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddOpenApi();
+builder.Services.AddSingleton<VideoGameCsvRepository>();
+builder.Services.AddControllers();
+
 var app = builder.Build();
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 app.UseHttpsRedirection();
-
-builder.Services.AddSingleton<VideoGameRepository>();
-builder.Services.AddControllers();
-
 app.MapControllers();
-namespace Modul2WEBAPI
-{
-    
-}
+
+app.Run();

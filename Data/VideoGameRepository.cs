@@ -49,7 +49,7 @@ namespace Modul2WEBAPI
             _games.Add(game);
             return game;
         }
-        public bool Update(int id, VideoGameCSV update)
+        public bool Update(int id, VideoGame update)
         {
             var game = GetById(id);
             if(game==null)return false;

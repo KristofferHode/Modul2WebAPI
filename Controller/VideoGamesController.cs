@@ -1,14 +1,13 @@
-using Microsoft.AspNetCore.Components;
+
 using Microsoft.AspNetCore.Mvc;
-using Modul2WEBAPI;
 using VideoGameModel.model;
 
-namespace Modul2WEBAPI.Controller
+namespace Modul2WEBAPI.Controllers
 {
     
 
     [ApiController]
-    [Route("api/[Controller")]
+    [Route("api/[controller]")]
     public class VideoGamesController : ControllerBase
     {
         private readonly VideoGameCsvRepository _repo;
@@ -42,7 +41,7 @@ namespace Modul2WEBAPI.Controller
         
         //UPDATE
         [HttpPut("{id}")]
-        public IActionResult Update(int id, VideoGameCSV game)
+        public IActionResult Update(int id, VideoGame game)
         {
             var success = _repo.Update(id,game);
             return success? NoContent():NotFound();
