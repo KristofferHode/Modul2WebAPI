@@ -16,7 +16,7 @@ namespace Modul2WEBAPI
         }
         private void LoadFromCsv()
         {
-            using var reader = new StreamReader("VideoGameCsvs.csv");
+            using var reader = new StreamReader("VideogamesCsv.csv");
             using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 
@@ -31,7 +31,7 @@ namespace Modul2WEBAPI
                 {
                     GameID=_nextId++,
                     Title= r.Title,
-                    Genere= r.Genere,
+                    Genre= r.Genre,
                     Platform=r.Platform,
                     ReleaseYear= r.ReleaseYear,
                     Publisher=r.Publisher,
@@ -55,7 +55,7 @@ namespace Modul2WEBAPI
             if(game==null)return false;
 
             game.Title=update.Title;
-            game.Genere=update.Genere;
+            game.Genre=update.Genre;
             game.Platform=update.Platform;
             game.ReleaseYear=update.ReleaseYear;
             game.Publisher=update.Publisher;

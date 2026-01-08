@@ -5,7 +5,7 @@ builder.Services.AddSingleton<VideoGameCsvRepository>();
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSingleton<VideoGameCsvRepository>();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
